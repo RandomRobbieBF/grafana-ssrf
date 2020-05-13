@@ -7,6 +7,7 @@ Notes
 * Azure metadata header has been added to all SSRFS
 * Google metadata header has been added to all SSRFS
 * SSRF will not follow redirects no matter what so ensure url is direct.
+* If login is via SSO or other none grafana logins please grab your session cookie and use the -s flag
 
 Usage
 ---
