@@ -97,7 +97,7 @@ def check_ssrf(sessionid,id,ghost,ssrf_url):
 	response = session.get(""+ghost+"/api/datasources/proxy/"+id+"/", headers=headers, cookies=cookies,verify=False, proxies=proxyDict)
 	if response.status_code != 502:
 		print("Status code:   %i" % response.status_code)
-		print("Response body: %s" % response.text)
+		print("Response body:\n %s" % response.text)
 		gghost = ghost.partition('://')[2]
 		sub_addr = gghost.partition('.')[0]
 		text_file = open(""+sub_addr+".txt", "a")
