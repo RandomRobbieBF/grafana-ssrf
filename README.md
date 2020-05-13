@@ -1,12 +1,19 @@
 # grafana-ssrf
 Authenticated SSRF in Grafana.
 
+Notes
+---
+
+* Azure metadata header has been added to all SSRFS
+* Google metadata header has been added to all SSRFS
+* SSRF will not follow redirects no matter what so ensure url is direct.
+
 Usage
 ---
 
 
 ```
-usage: grafana.py [-h] [-s SESSION] [-u URL] [-H HOST] [-f FILE] [-U USERNAME]
+usage: grafana-ssrf.py [-h] [-s SESSION] [-u URL] [-H HOST] [-f FILE] [-U USERNAME]
                   [-P PASSWORD]
 
 optional arguments:
@@ -34,9 +41,4 @@ Response body: <html><body>c7yzzb4zyj5v14wkpi2nxvzjigz</body></html>
 Deleted Old SSRF Source
 ```
 
-Notes
----
 
-* Azure metadata header has been added to all SSRFS
-* Google metadata header has been added to all SSRFS
-* SSRF will not follow redirects no matter what so ensure url is direct.
