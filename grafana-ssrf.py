@@ -27,7 +27,7 @@ parser.add_argument("-H", "--host", default="http://kubernetes.docker.internal:5
 parser.add_argument("-f", "--file", default="urls.txt",required=False, help="File of URLS to check SSRF Against")
 parser.add_argument("-U", "--username", default="",required=False, help="Username for Grafana")
 parser.add_argument("-P", "--password", default="",required=False, help="Password for Grafana")
-parser.add_argument("-p", "--proxy", default="http://127.0.0.1:8085",required=False, help="Proxy for debugging")
+parser.add_argument("-p", "--proxy", default="",required=False, help="Proxy for debugging")
 
 args = parser.parse_args()
 ssrf_url = args.url
