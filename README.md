@@ -43,3 +43,6 @@ Deleted Old SSRF Source
 ```
 
 
+Don't forget to check out what jobs we have open!
+
+https://bishopfox.com/jobs#open-positions - Come Join the Fox's!
